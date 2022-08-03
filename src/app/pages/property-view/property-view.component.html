@@ -4,6 +4,6 @@
 <div>
 
   <pre style="white-space: pre-line;width: 800px;">
-    {{(data$ | async)?.data?.results?.listings | json}}
+    data: {{data$ | async | json}}
   </pre>
 </div>

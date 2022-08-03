@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PropertyViewService } from '@app/services/property-view.service';
+import { SetProperties } from '@app/store/property-view/property-view.actions';
+import { PVState } from '@app/store/state';
+import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -9,14 +11,19 @@ import { Observable, of } from 'rxjs';
 export class PropertyViewComponent implements OnInit {
 
   data$: Observable<any> = of(null);
-  constructor(private propertyViewSvc: PropertyViewService) { }
+  constructor(private store: Store<PVState>) {
+    this.data$ = this.store.select(s => s.property.properties);
+  }
 
   ngOnInit(): void {
+    this.store.select(s => s.property.properties).subscribe(data => {
+      console.log(data);
+    });
 
   }
 
   getData() {
-    this.data$ = this.propertyViewSvc.getProperties(null as any);
+    this.store.dispatch(SetProperties.init({}));
   }
 
 }
