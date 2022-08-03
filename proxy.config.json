@@ -1,0 +1,8 @@
+{
+  "/serp/*": {
+    "target": "https://www.vrbo.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  }
+}

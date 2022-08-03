@@ -1,1 +1,9 @@
 <p>property-view works!</p>
+
+<p-button (click)="getData()">Get Data</p-button>
+<div>
+
+  <pre style="white-space: pre-line;width: 800px;">
+    {{(data$ | async)?.data?.results?.listings | json}}
+  </pre>
+</div>
