@@ -1,0 +1,32 @@
+<section class="wrapper">
+
+  <section class="flex p-2 pl-0 border-bottom-1 align-items-center"
+    *ngFor="let i of [1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5]">
+
+    <div class="checkbox flex-shrink-1 pr-2">
+      <p-checkbox name="selected" [value]="i"></p-checkbox>
+    </div>
+    <div class="flex gap-2 flex-grow-1">
+      <div class="flex">
+        <img class="prop-image" src="https://picsum.photos/seed/200/300">
+      </div>
+      <div class="flex flex-column flex-grow-1 gap-2 prop-details">
+        <span class="match-percentage orange">76% Match</span>
+        <span class="prop-desc" pTooltip="Sit ad duis labore quis aliquip aliqua quis nulla reprehenderit esse.">Sit
+          ad duis labore quis aliquip aliqua quis nulla reprehenderit esse.</span>
+        <small class="prop-spec">1br . 1ba sleeps 2</small>
+        <span class="ratings flex align-items-center justify-content-between mt-2">
+          <div>
+            <pv-star-rating></pv-star-rating>
+            <span class="count pl-2">(12)</span>
+          </div>
+          <b class="text-red-500 cursor-pointer" role="button" tabindex="0">Remove</b>
+        </span>
+
+      </div>
+    </div>
+
+
+  </section>
+
+</section>

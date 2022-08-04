@@ -1,0 +1,38 @@
+.wrapper {
+
+  max-height: 80vh;
+  overflow: auto;
+
+  .prop-image {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+  }
+
+  .prop-details {
+
+    .match-percentage {
+      &.green {
+        color: greenyellow;
+      }
+
+      &.orange {
+        color: orange;
+      }
+
+      &.red {
+        color: red;
+      }
+    }
+
+    .prop-desc {
+      max-width: 15rem; //TODO fix for flex dynamic width
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+
+  }
+
+}

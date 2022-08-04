@@ -1,9 +1,8 @@
-<p>property-view works!</p>
-
-<!-- <p-button (click)="getData()">Get Data</p-button> -->
-<div>
-
-  <pre style="white-space: pre-line;width: 800px;">
-    data: {{properties$ | async | json}}
-  </pre>
-</div>
+<section class="property-view grid m-0">
+  <section class="list col-4 p-0">
+    <pv-property-view-list></pv-property-view-list>
+  </section>
+  <section class="map col-8 p-0">
+    <pv-property-view-map></pv-property-view-map>
+  </section>
+</section>
