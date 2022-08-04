@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SetProperties } from '@app/store/property-view/property-view.actions';
+import { Listing } from '@app/models/properties.model';
+import { CoreFilters } from '@app/models/query-body.model';
+import { LoadProperties } from '@app/store/property-view/property-view.actions';
 import { PVState } from '@app/store/state';
 import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   templateUrl: './property-view.component.html',
@@ -10,20 +12,18 @@ import { Observable, of } from 'rxjs';
 })
 export class PropertyViewComponent implements OnInit {
 
-  data$: Observable<any> = of(null);
+  properties$: Observable<Listing[]>;
+  propertiesFilter$: Observable<CoreFilters>;
+
   constructor(private store: Store<PVState>) {
-    this.data$ = this.store.select(s => s.property.properties);
+    this.properties$ = this.store.select(s => s.property.properties);
+    this.propertiesFilter$ = this.store.select(s => s.property.propertiesFilter);
   }
 
   ngOnInit(): void {
-    this.store.select(s => s.property.properties).subscribe(data => {
-      console.log(data);
+    this.propertiesFilter$.subscribe(propertyFilters => {
+      this.store.dispatch(LoadProperties.init({ filters: propertyFilters }));
     });
-
-  }
-
-  getData() {
-    this.store.dispatch(SetProperties.init({}));
   }
 
 }

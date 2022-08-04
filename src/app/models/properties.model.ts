@@ -1,3 +1,5 @@
+import { CoreFilters } from "./query-body.model";
+
 export interface PropertiesResponse {
   data: Data;
 }
@@ -300,19 +302,19 @@ export interface ParsedParams {
   __typename: string;
 }
 
-export interface CoreFilters {
-  adults: null;
-  children: null;
-  pets: number;
-  minBedrooms: number;
-  maxBedrooms: null;
-  minBathrooms: number;
-  maxBathrooms: null;
-  minNightlyPrice: number;
-  maxNightlyPrice: null;
-  minSleeps: null;
-  __typename: string;
-}
+// export interface CoreFilters {
+//   adults?: null;
+//   children?: null;
+//   pets?: number;
+//   minBedrooms?: number;
+//   maxBedrooms?: null;
+//   minBathrooms?: number;
+//   maxBathrooms?: null;
+//   minNightlyPrice?: number;
+//   maxNightlyPrice?: null;
+//   minSleeps?: null;
+//   __typename?: string;
+// }
 
 export interface TypeaheadSuggestion {
   uuid: string;

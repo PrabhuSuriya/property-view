@@ -34,15 +34,15 @@ export interface BoundingBox {
 }
 
 export interface CoreFilters {
-  maxBathrooms: null;
-  maxBedrooms: null;
-  maxNightlyPrice: null;
-  maxTotalPrice: null;
-  minBathrooms: number;
-  minBedrooms: number;
-  minNightlyPrice: number;
-  minTotalPrice: null;
-  pets: number;
+  maxBathrooms?: null;
+  maxBedrooms?: null;
+  maxNightlyPrice?: null;
+  maxTotalPrice?: null;
+  minBathrooms?: number;
+  minBedrooms?: number;
+  minNightlyPrice?: number;
+  minTotalPrice?: null;
+  pets?: number;
 }
 
 export interface Paging {

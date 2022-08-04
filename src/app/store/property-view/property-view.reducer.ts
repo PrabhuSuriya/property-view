@@ -1,24 +1,25 @@
 import { Listing } from '@app/models/properties.model';
+import { CoreFilters } from '@app/models/query-body.model';
 import { createReducer, on } from '@ngrx/store';
-import { SetProperties } from './property-view.actions';
+import { LoadProperties } from './property-view.actions';
 
 export interface PropertyViewModel {
   properties: Listing[];
+  propertiesFilter: CoreFilters;
 }
 
 export const INITIAL_STATE: PropertyViewModel = {
   properties: [],
+  propertiesFilter: {}
 }
 
 export const propertyReducer = createReducer(
   INITIAL_STATE,
 
-  on(SetProperties.init, state => {
-    const s = {
+  on(LoadProperties.success, (state, action) => {
+    return {
       ...state,
-      properties: [{ "listingNumber": 4704285 } as any]
-    }
-    console.log(s)
-    return s;
-  }),
+      properties: action.listings
+    };
+  })
 );

@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PropertyViewFilterComponent } from './components/property-view-filter/property-view-filter.component';
@@ -11,6 +12,7 @@ import { PropertyViewListComponent } from './components/property-view-list/prope
 import { PropertyViewMapComponent } from './components/property-view-map/property-view-map.component';
 import { PropertyViewComponent } from './pages/property-view/property-view.component';
 import { propertyReducer } from './store/property-view/property-view.reducer';
+import { PropertyViewEffects } from './store/property-view/property-view.effects';
 
 const components = [
   PropertyViewComponent,
@@ -24,6 +26,7 @@ const components = [
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot({ property: propertyReducer }),
+    EffectsModule.forRoot([PropertyViewEffects]),
     AppRoutingModule,
     ButtonModule,
   ],

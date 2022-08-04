@@ -34,8 +34,8 @@ export function createAsyncAction<
 ): AsyncAction<T, P, K> {
   return {
     init: createAction(name, payload),
-    success: createAction(`${name} success`, response),
-    failure: createAction(`${name} failure`, failure)
+    success: createAction(`${name} Success`, response),
+    failure: createAction(`${name} Failure`, failure)
   };
 }
 
