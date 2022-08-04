@@ -1,1 +1,4 @@
-<section>property-view-map works!</section>
+<section class="h-full">
+  <google-map height="100%" width="100%" *ngIf="mapApiLoaded$ | async" class="h-full" [options]="options">
+  </google-map>
+</section>
