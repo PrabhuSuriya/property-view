@@ -58,7 +58,7 @@ const getDefaultQueryBody = (): QueryBody => ({
         "minLat": 41.79337697865317,
         "minLng": -88.63484212544442
       },
-      "q": "chicago-illinois-united-states-of-america"
+      "q": "paris-europe"
     },
     "vrbo_web_global_messaging_alert": true,
     "vrbo_web_global_messaging_banner": true,

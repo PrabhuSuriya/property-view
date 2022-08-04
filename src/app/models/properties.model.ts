@@ -148,6 +148,7 @@ export interface Listing {
   geoCode: GeoCode;
   roomInfo?: string; // formatted info filled by component
   roomInfoFull?: string; // formatted info filled by component
+  matchPercentage?: number; // formatted info filled by component
 }
 
 export enum ListingTypename {

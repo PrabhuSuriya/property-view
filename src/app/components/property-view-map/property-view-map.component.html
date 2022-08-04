@@ -1,4 +1,7 @@
 <section class="h-full">
-  <google-map height="100%" width="100%" *ngIf="mapApiLoaded$ | async" class="h-full" [options]="options">
+  <google-map #map height="100%" width="100%" *ngIf="mapApiLoaded$ | async" class="h-full" [options]="options"
+    (mapInitialized)="onMapInitialized()">
+    <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition" [options]="markerOptions">
+    </map-marker>
   </google-map>
 </section>

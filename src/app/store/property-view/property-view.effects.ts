@@ -15,7 +15,7 @@ export class PropertyViewEffects {
       switchMap((action) =>
         this.propertyViewSvc.getProperties(action.filters)
           .pipe(
-            map((response) => LoadProperties.success({ listings: response?.data?.results?.listings })),
+            map((response) => LoadProperties.success({ listings: response?.data?.results?.listings, mapViewport: response?.data?.results?.mapViewport })),
             catchError((err) => [LoadProperties.failure({ message: '' })]) // TODO dispatch notification here
           )
       )));

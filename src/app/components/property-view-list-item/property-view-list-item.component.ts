@@ -13,7 +13,7 @@ export class PropertyViewListItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.property)
+    // console.log(this.property)
   }
 
 }

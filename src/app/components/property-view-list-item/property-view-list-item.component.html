@@ -5,10 +5,10 @@
     </div>
     <div class="flex gap-2 flex-grow-1">
       <div class="flex">
-        <img class="prop-image" src="https://picsum.photos/seed/200/300">
+        <img class="prop-image" [src]="property?.images?.[0]?.c9_uri">
       </div>
       <div class="flex flex-column flex-grow-1 gap-2 prop-details">
-        <span class="match-percentage orange">76% Match</span>
+        <span class="match-percentage red">{{property?.matchPercentage}}% Match</span>
         <span class="prop-desc"
           [pTooltip]="property?.propertyMetadata?.headline!">{{property?.propertyMetadata?.headline}}</span>
         <small class="prop-spec" [pTooltip]="property.roomInfoFull!" tooltipPosition="left">{{property.roomInfo}}</small>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Listing } from '@app/models/properties.model';
+import { Listing, MapViewport } from '@app/models/properties.model';
 import { CoreFilters } from '@app/models/query-body.model';
 import { LoadProperties } from '@app/store/property-view/property-view.actions';
 import { PVState } from '@app/store/state';
@@ -13,6 +13,7 @@ import { map, Observable, startWith } from 'rxjs';
 export class PropertyViewComponent implements OnInit {
 
   properties$: Observable<Listing[]>;
+  viewPort$: Observable<MapViewport | undefined>;
   propertiesFilter$: Observable<CoreFilters>;
 
   constructor(private store: Store<PVState>) {
@@ -22,6 +23,7 @@ export class PropertyViewComponent implements OnInit {
     );
 
     this.propertiesFilter$ = this.store.select(s => s.property.propertiesFilter);
+    this.viewPort$ = this.store.select(s => s.property.mapViewPort);
   }
 
   ngOnInit(): void {
@@ -31,10 +33,11 @@ export class PropertyViewComponent implements OnInit {
   }
 
   formatPropertyData(property: Listing[]): Listing[] {
-    return property.map(p => ({
+    return property.map((p, i) => ({
       ...p,
       roomInfo: `${p.bedrooms} br . ${p.bathrooms.full} ba . Sleeps ${p.sleeps}`, //TODO implement i18n
       roomInfoFull: `${p.bedrooms} Bedrooms \n ${p.bathrooms.full} Full Bathrooms \n ${p.bathrooms.half} Half Bathrooms \n ${p.sleeps} Sleeps `, //TODO implement i18n
+      matchPercentage: ((i + 1) * 9) % 100 // TODO Remove mocking match percentage
     }));
   }
 
