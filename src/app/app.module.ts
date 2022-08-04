@@ -20,6 +20,7 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 import { PropertyViewComponent } from './pages/property-view/property-view.component';
 import { PropertyViewEffects } from './store/property-view/property-view.effects';
 import { propertyReducer } from './store/property-view/property-view.reducer';
+import { CommonModule } from '@angular/common';
 
 const components = [
   PropertyViewComponent,
@@ -38,6 +39,7 @@ const primeModules = [
 @NgModule({
   imports: [
     BrowserModule,
+    CommonModule,
     HttpClientModule,
     HttpClientJsonpModule,
     StoreModule.forRoot({ property: propertyReducer }),

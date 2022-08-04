@@ -146,6 +146,8 @@ export interface Listing {
   listingNamespace: ListingNamespace;
   listingNumber: number;
   geoCode: GeoCode;
+  roomInfo?: string; // formatted info filled by component
+  roomInfoFull?: string; // formatted info filled by component
 }
 
 export enum ListingTypename {

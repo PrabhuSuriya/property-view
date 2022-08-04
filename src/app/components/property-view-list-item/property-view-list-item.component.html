@@ -9,13 +9,13 @@
       </div>
       <div class="flex flex-column flex-grow-1 gap-2 prop-details">
         <span class="match-percentage orange">76% Match</span>
-        <span class="prop-desc" pTooltip="Sit ad duis labore quis aliquip aliqua quis nulla reprehenderit esse.">Sit
-          ad duis labore quis aliquip aliqua quis nulla reprehenderit esse.</span>
-        <small class="prop-spec">1br . 1ba sleeps 2</small>
+        <span class="prop-desc"
+          [pTooltip]="property?.propertyMetadata?.headline!">{{property?.propertyMetadata?.headline}}</span>
+        <small class="prop-spec" [pTooltip]="property.roomInfoFull!" tooltipPosition="left">{{property.roomInfo}}</small>
         <span class="ratings flex align-items-center justify-content-between mt-2">
           <div>
-            <pv-star-rating></pv-star-rating>
-            <span class="count pl-2">(12)</span>
+            <pv-star-rating [rating]="property.averageRating"></pv-star-rating>
+            <span class="count pl-2">({{property.reviewCount}})</span>
           </div>
           <b class="text-red-500 cursor-pointer" role="button" tabindex="0">Remove</b>
         </span>

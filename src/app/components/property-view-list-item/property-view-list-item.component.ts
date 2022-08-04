@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Listing } from '@app/models/properties.model';
 
 @Component({
   selector: 'pv-property-view-list-item',
@@ -7,10 +8,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PropertyViewListItemComponent implements OnInit {
+  @Input() property!: Listing;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.property)
   }
 
 }

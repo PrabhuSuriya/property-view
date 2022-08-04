@@ -1,5 +1,4 @@
 <pv-property-view-list-search></pv-property-view-list-search>
 <section class="list-wrapper">
-
-  <pv-property-view-list-item *ngFor="let i of [1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5]"></pv-property-view-list-item>
+  <pv-property-view-list-item *ngFor="let property of properties" [property]="property"></pv-property-view-list-item>
 </section>
