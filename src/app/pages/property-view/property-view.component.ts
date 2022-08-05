@@ -56,6 +56,10 @@ export class PropertyViewComponent implements OnInit {
     this.showFilterPanel = toggle;
   }
 
+  onFilterChange(filter: CoreFilters) {
+    this.store.dispatch(UpdateFilter({ filters: { coreFilters: filter } } as any))
+  }
+
   onClose(toggle) {
     this.showFilterPanel = toggle;
   }

@@ -8,7 +8,7 @@
   </section>
   <section class="map col-7 sm:col-6 xl:col-8 p-0">
     <section *ngIf="showFilterPanel" [@flyInOut] class="filter-wrapper absolute z-1 m-2">
-      <pv-property-view-filter (close)="onClose($event)" [coreFilters]="coreFilters">
+      <pv-property-view-filter (close)="onClose($event)" (filterChange)="onFilterChange($event)" [coreFilters]="coreFilters">
       </pv-property-view-filter>
     </section>
     <pv-property-view-map [viewport]="(viewPort$ | async)!" [properties]="(properties$ | async)!">

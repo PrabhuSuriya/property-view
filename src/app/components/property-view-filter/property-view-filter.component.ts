@@ -19,6 +19,11 @@ export class PropertyViewFilterComponent implements OnInit {
     this.close.emit(false);
   }
 
+  onApply() {
+    this.filterChange.emit(this.coreFilters);
+    this.close.emit(false);
+  }
+
   ngOnInit(): void {
   }
 
