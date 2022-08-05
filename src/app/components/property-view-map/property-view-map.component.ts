@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { GoogleMap } from '@angular/google-maps';
+import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { Listing, MapViewport } from '@app/models/properties.model';
 import { BehaviorSubject, catchError, combineLatest, map, Observable, of, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -16,6 +16,7 @@ export class PropertyViewMapComponent implements OnChanges {
   @Input() viewport!: MapViewport;
 
   @ViewChild('map') map!: GoogleMap;
+  @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
 
   mapApiLoaded$: Observable<boolean>;
   options: google.maps.MapOptions = {
@@ -26,8 +27,8 @@ export class PropertyViewMapComponent implements OnChanges {
     draggable: false,
     // TODO update marker to discs
     // icon: {
-    //   path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
-    //   fillColor: '#0034C8',
+    //   path: google.maps.SymbolPath.CIRCLE,// "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+    //   fillColor: 'blue',
     //   strokeColor: '#FFFFFF',
     //   strokeWeight: 3,
     // }
@@ -36,7 +37,8 @@ export class PropertyViewMapComponent implements OnChanges {
   mapReady$ = new Subject();
 
 
-  markerPositions: google.maps.LatLngLiteral[] = [];
+  mapMarkers: Marker[] = [];
+  // markerPositions: google.maps.LatLngLiteral[] = [];
 
 
   constructor(httpClient: HttpClient) {
@@ -47,6 +49,14 @@ export class PropertyViewMapComponent implements OnChanges {
       );
     combineLatest([this.mapReady$, this.bounds$])
       .subscribe(([_, bounds]) => {
+        // this.markerOptions.icon = {
+        //   path: google.maps.SymbolPath.CIRCLE,// "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+        //   path: '<svg style="color: blue" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16"> <circle cx="8" cy="8" r="8"></circle> </svg>',
+        //   fillColor: '#1274ef',
+        //   strokeColor: '#1274ef',
+        //   // size: new google.maps.Size(200, 200, 'px', 'px'),
+        //   scale: 6
+        // };
         setTimeout(() => {
           this.map?.fitBounds(bounds);
         }, 1000)
@@ -55,7 +65,10 @@ export class PropertyViewMapComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['properties']?.currentValue) {
-      this.markerPositions = this.properties.map(this.getMarkers);
+      this.mapMarkers = this.properties.map(x => ({
+        markerPosition: this.getMarkerPosition(x),
+        listing: x
+      }));
     }
     if (changes['viewport']?.currentValue) {
       this.bounds$.next(
@@ -70,11 +83,21 @@ export class PropertyViewMapComponent implements OnChanges {
     this.mapReady$.next(true);
   }
 
-  getMarkers(listing: Listing): google.maps.LatLngLiteral {
+  openInfoWindow(marker: MapMarker, listing: Listing) {
+    this.infoWindow.infoWindow?.setContent(listing.propertyMetadata.propertyName || listing.propertyMetadata.headline);
+    this.infoWindow.open(marker);
+  }
+
+  getMarkerPosition(listing: Listing): google.maps.LatLngLiteral {
     return {
       lat: listing.geoCode.latitude,
       lng: listing.geoCode.longitude
     }
   }
 
+}
+
+interface Marker {
+  markerPosition: google.maps.LatLngLiteral,
+  listing: Listing
 }

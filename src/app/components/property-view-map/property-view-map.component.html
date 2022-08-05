@@ -1,7 +1,9 @@
 <section class="h-full">
   <google-map #map height="100%" width="100%" *ngIf="mapApiLoaded$ | async" class="h-full" [options]="options"
     (mapInitialized)="onMapInitialized()">
-    <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition" [options]="markerOptions">
+    <map-marker #marker="mapMarker" *ngFor="let item of mapMarkers" [position]="item.markerPosition"
+      [options]="markerOptions" (mapClick)="openInfoWindow(marker, item.listing)">
     </map-marker>
+    <map-info-window>Info Window content</map-info-window>
   </google-map>
 </section>
