@@ -11,30 +11,6 @@ import { map, Observable, startWith } from 'rxjs';
   templateUrl: './property-view.component.html',
   styleUrls: ['./property-view.component.scss'],
   animations: [
-    trigger(
-      'inOutAnimation',
-      [
-        // transition(
-        //   ':enter',
-        //   [
-        //     style({ height: 0, opacity: 0 }),
-        //     animate('1s ease-out',
-        //       style({ height: 300, opacity: 1 }))
-        //   ]
-        // ),
-        // transition(
-        //   ':leave',
-        //   [
-        //     style({ height: 300, opacity: 1 }),
-        //     animate('1s ease-in',
-        //       style({ height: 0, opacity: 0 }))
-        //   ]
-        // ),
-        transition('open <=> closed', [
-          animate('0.5s')
-        ])
-      ]
-    ),
     trigger('flyInOut', [
       state('in', style({ transform: 'translateX(0)' })),
       transition('void => *', [
