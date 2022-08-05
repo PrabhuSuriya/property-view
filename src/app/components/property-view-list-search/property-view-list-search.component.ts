@@ -17,7 +17,7 @@ export class PropertyViewListSearchComponent implements OnInit {
   debouncer$ = new Subject<string>();
   constructor() {
     this.debouncer$.pipe(
-      debounceTime(500)
+      debounceTime(800)
     ).subscribe(data => {
       this.searchQuery.emit(data);
 

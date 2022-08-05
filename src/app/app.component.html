@@ -7,3 +7,8 @@
   <router-outlet></router-outlet>
 </div>
 
+<div class="loader-wrapper" *ngIf="showLoader | async">
+
+  <span class="loader"></span>
+</div>
+

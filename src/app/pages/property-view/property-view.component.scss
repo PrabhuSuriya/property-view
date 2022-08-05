@@ -1,6 +1,10 @@
 :host {
   width: 100%;
+.list {
+  min-height: 80vh;
+}
+
   .filter-wrapper {
     max-width: max(40%, 28rem);
-    }
+  }
 }
