@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Listing, MapViewport } from '@app/models/properties.model';
-import { CoreFilters } from '@app/models/query-body.model';
-import { LoadProperties } from '@app/store/property-view/property-view.actions';
+import { QueryFilterModel } from '@app/models/query-body.model';
+import { LoadProperties, UpdateFilter } from '@app/store/property-view/property-view.actions';
 import { PVState } from '@app/store/state';
 import { Store } from '@ngrx/store';
 import { map, Observable, startWith } from 'rxjs';
@@ -14,7 +14,7 @@ export class PropertyViewComponent implements OnInit {
 
   properties$: Observable<Listing[]>;
   viewPort$: Observable<MapViewport | undefined>;
-  propertiesFilter$: Observable<CoreFilters>;
+  propertiesFilter$: Observable<QueryFilterModel>;
 
   constructor(private store: Store<PVState>) {
     this.properties$ = this.store.select(s => s.property.properties).pipe(
@@ -30,6 +30,10 @@ export class PropertyViewComponent implements OnInit {
     this.propertiesFilter$.subscribe(propertyFilters => {
       this.store.dispatch(LoadProperties.init({ filters: propertyFilters }));
     });
+  }
+
+  onSearchQuery(queryText) {
+    this.store.dispatch(UpdateFilter({ filters: { q: queryText } } as any));
   }
 
   formatPropertyData(property: Listing[]): Listing[] {

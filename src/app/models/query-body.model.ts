@@ -27,10 +27,10 @@ export interface Request {
 }
 
 export interface BoundingBox {
-  maxLat: number;
-  maxLng: number;
-  minLat: number;
-  minLng: number;
+  maxLat?: number;
+  maxLng?: number;
+  minLat?: number;
+  minLng?: number;
 }
 
 export interface CoreFilters {
@@ -48,4 +48,10 @@ export interface CoreFilters {
 export interface Paging {
   page: number;
   pageSize: number;
+}
+
+
+export interface QueryFilterModel {
+  coreFilters: CoreFilters;
+  q: string;
 }

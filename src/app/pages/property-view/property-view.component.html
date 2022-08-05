@@ -1,9 +1,10 @@
 <section class="property-view grid grid-nogutter">
   <section class="list col-5 sm:col-6 xl:col-3 p-0">
-    <pv-property-view-list [properties]="(properties$ | async)!"></pv-property-view-list>
+    <pv-property-view-list [properties]="(properties$ | async)!" [filters]="(propertiesFilter$ | async)!"
+      (searchQuery)="onSearchQuery($event)">
+    </pv-property-view-list>
   </section>
   <section class="map col-7 sm:col-6 xl:col-9 p-0">
-    {{(viewPort$ | async | json)}}
     <pv-property-view-map [viewport]="(viewPort$ | async)!" [properties]="(properties$ | async)!"></pv-property-view-map>
   </section>
 </section>

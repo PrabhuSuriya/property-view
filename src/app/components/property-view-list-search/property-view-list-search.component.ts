@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { QueryFilterModel } from '@app/models/query-body.model';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'pv-property-view-list-search',
@@ -8,7 +10,22 @@ import { ChangeDetectionStrategy, Component, OnInit, Output } from '@angular/cor
 })
 export class PropertyViewListSearchComponent implements OnInit {
 
-  constructor() { }
+  @Input() filters!: QueryFilterModel;
+  @Output() searchQuery = new EventEmitter<string>();
+
+  debouncer$ = new Subject<string>();
+  constructor() {
+    this.debouncer$.pipe(
+      debounceTime(500)
+    ).subscribe(data => {
+      this.searchQuery.emit(data);
+
+    })
+  }
+
+  onQueryChange(value) {
+    this.debouncer$.next(value);
+  }
 
   ngOnInit(): void {
   }

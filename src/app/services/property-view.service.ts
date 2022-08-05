@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PropertiesResponse } from '@app/models/properties.model';
-import { CoreFilters, QueryBody } from '@app/models/query-body.model';
+import { CoreFilters, QueryBody, QueryFilterModel } from '@app/models/query-body.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,16 +14,17 @@ export class PropertyViewService {
     this.baseUrl = environment.baseAPIUrl
   }
 
-  getProperties(filters: CoreFilters) {
+  getProperties(query: QueryFilterModel) {
     return this.http.post<PropertiesResponse>(
       this.getUrl('serp/g'),
-      this.getQueryBody(filters)
+      this.getQueryBody(query)
     );
   }
 
-  private getQueryBody(coreFilters: CoreFilters): QueryBody {
+  private getQueryBody(query: QueryFilterModel): QueryBody {
     const queryBody = getDefaultQueryBody();
-    queryBody.variables.request.coreFilters ??= coreFilters;
+    queryBody.variables.request.coreFilters = query.coreFilters;
+    queryBody.variables.request.q = query.q;
     return queryBody;
   }
 
