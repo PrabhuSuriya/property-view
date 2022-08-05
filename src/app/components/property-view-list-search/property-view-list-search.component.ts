@@ -12,6 +12,7 @@ export class PropertyViewListSearchComponent implements OnInit {
 
   @Input() filters!: QueryFilterModel;
   @Output() searchQuery = new EventEmitter<string>();
+  @Output() filterToggle = new EventEmitter<boolean>();
 
   debouncer$ = new Subject<string>();
   constructor() {
@@ -25,6 +26,10 @@ export class PropertyViewListSearchComponent implements OnInit {
 
   onQueryChange(value) {
     this.debouncer$.next(value);
+  }
+
+  onFilterToggle() {
+    this.filterToggle.emit(true);
   }
 
   ngOnInit(): void {

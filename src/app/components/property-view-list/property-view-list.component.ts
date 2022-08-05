@@ -12,6 +12,7 @@ export class PropertyViewListComponent implements OnInit {
 
   @Input() properties: Listing[] = [];
   @Input() filters!: QueryFilterModel;
+  @Output() filterToggle = new EventEmitter<boolean>();
 
   @Output() searchQuery = new EventEmitter<string>();
 
@@ -23,5 +24,9 @@ export class PropertyViewListComponent implements OnInit {
   onSearchQuery(queryText) {
     console.log(queryText)
     this.searchQuery.emit(queryText);
+  }
+
+  onFilterToggle(toggle) {
+    this.filterToggle.emit(toggle);
   }
 }

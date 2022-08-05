@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 })
 export class StarRatingComponent implements OnInit {
   @Input() rating!: number;
+  @Input() showTooltip = true;
 
   constructor() { }
 

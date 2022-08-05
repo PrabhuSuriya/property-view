@@ -1,4 +1,5 @@
-<pv-property-view-list-search [filters]="filters" (searchQuery)="onSearchQuery($event)"></pv-property-view-list-search>
+<pv-property-view-list-search [filters]="filters" (searchQuery)="onSearchQuery($event)"
+  (filterToggle)="onFilterToggle($event)"></pv-property-view-list-search>
 <section class="list-wrapper">
   <pv-property-view-list-item *ngFor="let property of properties" [property]="property"></pv-property-view-list-item>
 </section>

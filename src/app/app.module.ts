@@ -1,6 +1,7 @@
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
@@ -40,6 +41,7 @@ const primeModules = [
   imports: [
     BrowserModule,
     CommonModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     HttpClientJsonpModule,
     StoreModule.forRoot({ property: propertyReducer }),

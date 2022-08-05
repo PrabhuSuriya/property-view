@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Listing, MapViewport } from '@app/models/properties.model';
 import { QueryFilterModel } from '@app/models/query-body.model';
@@ -8,13 +9,51 @@ import { map, Observable, startWith } from 'rxjs';
 
 @Component({
   templateUrl: './property-view.component.html',
-  styleUrls: ['./property-view.component.scss']
+  styleUrls: ['./property-view.component.scss'],
+  animations: [
+    trigger(
+      'inOutAnimation',
+      [
+        // transition(
+        //   ':enter',
+        //   [
+        //     style({ height: 0, opacity: 0 }),
+        //     animate('1s ease-out',
+        //       style({ height: 300, opacity: 1 }))
+        //   ]
+        // ),
+        // transition(
+        //   ':leave',
+        //   [
+        //     style({ height: 300, opacity: 1 }),
+        //     animate('1s ease-in',
+        //       style({ height: 0, opacity: 0 }))
+        //   ]
+        // ),
+        transition('open <=> closed', [
+          animate('0.5s')
+        ])
+      ]
+    ),
+    trigger('flyInOut', [
+      state('in', style({ transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateX(-100%)' }),
+        animate('200ms ease-out')
+      ]),
+      transition('* => void', [
+        animate('200ms ease-in', style({ transform: 'translateX(100%)' }))
+      ])
+    ])
+  ]
 })
 export class PropertyViewComponent implements OnInit {
 
   properties$: Observable<Listing[]>;
   viewPort$: Observable<MapViewport | undefined>;
   propertiesFilter$: Observable<QueryFilterModel>;
+
+  showFilterPanel = false;
 
   constructor(private store: Store<PVState>) {
     this.properties$ = this.store.select(s => s.property.properties).pipe(
@@ -34,6 +73,14 @@ export class PropertyViewComponent implements OnInit {
 
   onSearchQuery(queryText) {
     this.store.dispatch(UpdateFilter({ filters: { q: queryText } } as any));
+  }
+
+  onFilterToggle(toggle) {
+    this.showFilterPanel = toggle;
+  }
+
+  onClose(toggle) {
+    this.showFilterPanel = toggle;
   }
 
   formatPropertyData(property: Listing[]): Listing[] {
