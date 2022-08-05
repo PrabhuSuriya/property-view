@@ -1,11 +1,11 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Listing, MapViewport } from '@app/models/properties.model';
-import { QueryFilterModel } from '@app/models/query-body.model';
+import { CoreFilters, QueryFilterModel } from '@app/models/query-body.model';
 import { LoadProperties, UpdateFilter } from '@app/store/property-view/property-view.actions';
 import { PVState } from '@app/store/state';
 import { Store } from '@ngrx/store';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith, tap } from 'rxjs';
 
 @Component({
   templateUrl: './property-view.component.html',
@@ -28,6 +28,7 @@ export class PropertyViewComponent implements OnInit {
   properties$: Observable<Listing[]>;
   viewPort$: Observable<MapViewport | undefined>;
   propertiesFilter$: Observable<QueryFilterModel>;
+  coreFilters!: CoreFilters;
 
   showFilterPanel = false;
 
@@ -37,7 +38,7 @@ export class PropertyViewComponent implements OnInit {
       map(this.formatPropertyData)
     );
 
-    this.propertiesFilter$ = this.store.select(s => s.property.propertiesFilter);
+    this.propertiesFilter$ = this.store.select(s => s.property.propertiesFilter).pipe(tap(x => (this.coreFilters = { ...x.coreFilters })));
     this.viewPort$ = this.store.select(s => s.property.mapViewPort);
   }
 

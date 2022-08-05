@@ -15,10 +15,12 @@ export const INITIAL_STATE: PropertyViewModel = {
     coreFilters: {
       maxBathrooms: null,
       maxBedrooms: null,
+      maxSleeps: null,
       maxNightlyPrice: null,
       maxTotalPrice: null,
       minBathrooms: 0,
       minBedrooms: 0,
+      minSleeps: 0,
       minNightlyPrice: 0,
       minTotalPrice: null,
       pets: 0

@@ -5,23 +5,27 @@
   <div class="filter-wrapper bedrooms flex flex-column p-2 gap-2 mb-2">
     <strong class="text-2xl">Bedrooms</strong>
     <div class="flex gap-3 align-items-center justify-content-between">
-      <b class="text-2xl line-height-3">2</b>
+      <b class="text-2xl line-height-3 w-1ch">{{coreFilters?.minBedrooms}}</b>
       <span class="text-xl">Min Bedrooms</span>
       <span>
         <button pButton pRipple type="button" icon="pi pi-minus"
-          class="p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('minBedrooms', '-')"></button>
         <button pButton pRipple type="button" icon="pi pi-plus"
-          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('minBedrooms', '+')"></button>
       </span>
     </div>
     <div class="flex gap-3 align-items-center justify-content-between">
-      <b class="text-2xl line-height-3">2</b>
+      <b class="text-2xl line-height-3 w-1ch">{{coreFilters?.maxBedrooms}}</b>
       <span class="text-xl">Max Bedrooms</span>
       <span>
         <button pButton pRipple type="button" icon="pi pi-minus"
-          class="p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('maxBedrooms', '-')"></button>
         <button pButton pRipple type="button" icon="pi pi-plus"
-          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('maxBedrooms', '+')"></button>
       </span>
     </div>
   </div>
@@ -29,23 +33,27 @@
   <div class="filter-wrapper bathrooms flex flex-column p-2 gap-2 mb-2">
     <strong class="text-2xl">Bathrooms</strong>
     <div class="flex gap-3 align-items-center justify-content-between">
-      <b class="text-2xl line-height-3">2</b>
+      <b class="text-2xl line-height-3 w-1ch">{{coreFilters?.minBathrooms}}</b>
       <span class="text-xl">Min Bathrooms</span>
       <span>
         <button pButton pRipple type="button" icon="pi pi-minus"
-          class="p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('minBathrooms', '-')"></button>
         <button pButton pRipple type="button" icon="pi pi-plus"
-          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('minBathrooms', '+')"></button>
       </span>
     </div>
     <div class="flex gap-3 align-items-center justify-content-between">
-      <b class="text-2xl line-height-3">2</b>
+      <b class="text-2xl line-height-3 w-1ch">{{coreFilters?.maxBathrooms}}</b>
       <span class="text-xl">Max Bathrooms</span>
       <span>
         <button pButton pRipple type="button" icon="pi pi-minus"
-          class="p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('maxBathrooms', '-')"></button>
         <button pButton pRipple type="button" icon="pi pi-plus"
-          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('maxBathrooms', '+')"></button>
       </span>
     </div>
   </div>
@@ -54,23 +62,27 @@
   <div class="filter-wrapper sleeps flex flex-column p-2 gap-2 mb-2">
     <strong class="text-2xl">Sleeps</strong>
     <div class="flex gap-3 align-items-center justify-content-between">
-      <b class="text-2xl line-height-3">2</b>
+      <b class="text-2xl line-height-3 w-1ch">{{coreFilters?.minSleeps}}</b>
       <span class="text-xl">Min Sleeps</span>
       <span>
         <button pButton pRipple type="button" icon="pi pi-minus"
-          class="p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('minSleeps', '-')"></button>
         <button pButton pRipple type="button" icon="pi pi-plus"
-          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('minSleeps', '+')"></button>
       </span>
     </div>
     <div class="flex gap-3 align-items-center justify-content-between">
-      <b class="text-2xl line-height-3">2</b>
+      <b class="text-2xl line-height-3 w-1ch">{{coreFilters?.maxSleeps}}</b>
       <span class="text-xl">Max Sleeps</span>
       <span>
         <button pButton pRipple type="button" icon="pi pi-minus"
-          class="p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('maxSleeps', '-')"></button>
         <button pButton pRipple type="button" icon="pi pi-plus"
-          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"></button>
+          class="ml-4 p-button-rounded p-button-outlined p-button-secondary"
+          (click)="changeCount('maxSleeps', '+')"></button>
       </span>
     </div>
   </div>
@@ -116,7 +128,7 @@
   <div class="flex justify-content-end gap-4 mb-3 pr-3">
     <button pButton type="button" class="p-button-raised p-button-rounded p-button-outlined"
       (click)="onClose()">Cancel</button>
-    <button pButton type="button" class="p-button-raised p-button-rounded">Apply</button>
+    <button pButton type="button" class="p-button-raised p-button-rounded" (click)="onClose()">Apply</button>
   </div>
 
 </section>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CoreFilters } from '@app/models/query-body.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { CoreFilters } from '@app/models/query-body.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PropertyViewFilterComponent implements OnInit {
+  @Input() coreFilters!: CoreFilters;
   @Output() close = new EventEmitter<boolean>();
   @Output() filterChange = new EventEmitter<CoreFilters>();
 
@@ -19,6 +20,19 @@ export class PropertyViewFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  changeCount(field: string, operation: string) {
+    switch (operation) {
+      case '+': {
+        this.coreFilters[field] < 9 && (this.coreFilters[field] = this.coreFilters[field] + 1);
+        break;
+      }
+      case '-': {
+        this.coreFilters[field] > 0 && (this.coreFilters[field] = this.coreFilters[field] - 1);
+        break;
+      }
+    }
   }
 
 }
