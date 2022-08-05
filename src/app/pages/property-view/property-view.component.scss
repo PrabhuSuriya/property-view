@@ -1,6 +1,6 @@
 :host {
   width: 100%;
-.filter-wrapper {
-  width: 40%;
-}
+  .filter-wrapper {
+    max-width: max(40%, 28rem);
+    }
 }

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CoreFilters } from '@app/models/query-body.model';
 
 @Component({
   selector: 'pv-property-view-filter',
@@ -8,6 +9,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from
 })
 export class PropertyViewFilterComponent implements OnInit {
   @Output() close = new EventEmitter<boolean>();
+  @Output() filterChange = new EventEmitter<CoreFilters>();
+
+
   constructor() { }
 
   onClose() {

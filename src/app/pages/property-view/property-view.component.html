@@ -1,11 +1,11 @@
 <section class="property-view grid grid-nogutter">
-  <section class="list col-5 sm:col-6 xl:col-3 p-0">
+  <section class="list col-5 sm:col-6 xl:col-4 p-0">
     <pv-property-view-list (filterToggle)="onFilterToggle($event)" [properties]="(properties$ | async)!"
       [filters]="(propertiesFilter$ | async)!"
       (searchQuery)="onSearchQuery($event)">
     </pv-property-view-list>
   </section>
-  <section class="map col-7 sm:col-6 xl:col-9 p-0">
+  <section class="map col-7 sm:col-6 xl:col-8 p-0">
     <section *ngIf="showFilterPanel" [@flyInOut] class="filter-wrapper absolute z-1 m-2">
       <pv-property-view-filter (close)="onClose($event)"></pv-property-view-filter>
     </section>
