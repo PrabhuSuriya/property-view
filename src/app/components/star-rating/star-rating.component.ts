@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'pv-star-rating',
@@ -6,13 +6,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   styleUrls: ['./star-rating.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StarRatingComponent implements OnInit {
+export class StarRatingComponent {
   @Input() rating!: number;
   @Input() showTooltip = true;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Listing } from '@app/models/properties.model';
 import { QueryFilterModel } from '@app/models/query-body.model';
 
@@ -8,13 +8,8 @@ import { QueryFilterModel } from '@app/models/query-body.model';
   styleUrls: ['./property-view-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PropertyViewListComponent implements OnInit {
+export class PropertyViewListComponent {
 
   @Input() properties: Listing[] = [];
   @Input() filters!: QueryFilterModel;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 }

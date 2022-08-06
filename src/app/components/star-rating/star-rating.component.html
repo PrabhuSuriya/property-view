@@ -1,10 +1,12 @@
 <div class="star-ratings" [tooltipDisabled]="!showTooltip" [pTooltip]="(rating | number:'1.1-1')!">
+
   <!-- TODO make this 20 dynamic for other star ratings -->
   <div class="fill-ratings" [style.width.%]="rating * 20">
-
     <span>★★★★★</span>
   </div>
+
   <div class="empty-ratings">
     <span>★★★★★</span>
   </div>
+
 </div>

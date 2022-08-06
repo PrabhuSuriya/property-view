@@ -2,26 +2,28 @@
 
   <div class="checkbox flex-shrink-1 pr-2">
     <p-checkbox name="selected" value="select"></p-checkbox>
-    </div>
-    <div class="flex gap-2 flex-grow-1">
-      <div class="flex">
-        <img class="prop-image" [src]="property?.images?.[0]?.c9_uri">
-      </div>
-      <div class="flex flex-column flex-grow-1 gap-2 prop-details">
-        <span class="match-percentage red">{{property?.matchPercentage}}% Match</span>
-        <span class="prop-desc"
-          [pTooltip]="property?.propertyMetadata?.headline!">{{property?.propertyMetadata?.headline}}</span>
-        <small class="prop-spec" [pTooltip]="property.roomInfoFull!" tooltipPosition="left">{{property.roomInfo}}</small>
-        <span class="ratings flex align-items-center justify-content-between mt-2">
-          <div>
-            <pv-star-rating [rating]="property.averageRating"></pv-star-rating>
-            <span class="count pl-2">({{property.reviewCount}})</span>
-          </div>
-          <b class="text-red-500 cursor-pointer" role="button" tabindex="0">Remove</b>
-        </span>
+  </div>
 
-    </div>
+  <div class="flex gap-2 flex-grow-1">
+
+    <div class="flex">
+      <img class="prop-image" [src]="property?.images?.[0]?.c9_uri">
     </div>
 
+    <div class="flex flex-column flex-grow-1 gap-2 prop-details">
+      <span class="match-percentage red">{{property?.matchPercentage}}% Match</span>
+      <span class="prop-desc"
+        [pTooltip]="property?.propertyMetadata?.headline!">{{property?.propertyMetadata?.headline}}</span>
+      <small class="prop-spec" [pTooltip]="property.roomInfoFull!" tooltipPosition="left">{{property.roomInfo}}</small>
+      <span class="ratings flex align-items-center justify-content-between mt-2">
+        <div>
+          <pv-star-rating [rating]="property.averageRating"></pv-star-rating>
+          <span class="count pl-2">({{property.reviewCount}})</span>
+        </div>
+        <b class="text-red-500 cursor-pointer" role="button" tabindex="0">Remove</b>
+      </span>
+    </div>
+
+  </div>
 
 </section>

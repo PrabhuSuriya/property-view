@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +7,6 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class LoaderService {
   private showLoader$ = new BehaviorSubject<boolean>(false);
   showLoaderObs = this.showLoader$.asObservable();
-
-  constructor() { }
 
   toggleLoader(show) {
     this.showLoader$.next(show);
@@ -21,6 +19,5 @@ export class LoaderService {
   hideLoader() {
     this.toggleLoader(false);
   }
-
 
 }

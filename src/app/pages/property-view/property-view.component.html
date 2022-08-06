@@ -1,17 +1,25 @@
 <section class="property-view grid grid-nogutter">
+<!-- Search panel and List view -->
   <section class="list col-5 sm:col-6 xl:col-4 p-0">
+
     <pv-property-view-list-search [filters]="(propertiesFilter$ | async)!" (searchQuery)="onSearchQuery($event)"
       (filterToggle)="onFilterToggle($event)"></pv-property-view-list-search>
+
     <pv-property-view-list (filterToggle)="onFilterToggle($event)" [properties]="(properties$ | async)!"
       [filters]="(propertiesFilter$ | async)!" (searchQuery)="onSearchQuery($event)">
     </pv-property-view-list>
+
   </section>
+<!-- Filter panel and Map view -->
   <section class="map col-7 sm:col-6 xl:col-8 p-0">
+
     <section *ngIf="showFilterPanel" [@flyInOut] class="filter-wrapper absolute z-1 m-2">
       <pv-property-view-filter (close)="onClose($event)" (filterChange)="onFilterChange($event)" [coreFilters]="coreFilters">
       </pv-property-view-filter>
     </section>
+
     <pv-property-view-map [viewport]="(viewPort$ | async)!" [properties]="(properties$ | async)!">
     </pv-property-view-map>
-  </section>
+</section>
+
 </section>

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { LoaderService } from "@app/services/loader.service";
 import { PropertyViewService } from "@app/services/property-view.service";
-import { Actions, ofType, createEffect } from "@ngrx/effects";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, finalize, map, switchMap, tap } from "rxjs";
 import { LoadProperties } from "./property-view.actions";
 
@@ -10,6 +10,7 @@ import { LoadProperties } from "./property-view.actions";
 export class PropertyViewEffects {
   constructor(private actions$: Actions, private propertyViewSvc: PropertyViewService, private loaderSvc: LoaderService) { }
 
+  // Fetch Properties from API
   loadProperties$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LoadProperties.init),

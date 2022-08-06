@@ -4,6 +4,6 @@
     <map-marker #marker="mapMarker" *ngFor="let item of mapMarkers" [position]="item.markerPosition"
       [options]="markerOptions" (mapClick)="openInfoWindow(marker, item.listing)">
     </map-marker>
-    <map-info-window>Info Window content</map-info-window>
+    <map-info-window></map-info-window>
   </google-map>
 </section>

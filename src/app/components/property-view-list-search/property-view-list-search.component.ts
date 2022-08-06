@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { QueryFilterModel } from '@app/models/query-body.model';
 import { debounceTime, Subject } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { debounceTime, Subject } from 'rxjs';
   styleUrls: ['./property-view-list-search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PropertyViewListSearchComponent implements OnInit {
+export class PropertyViewListSearchComponent {
 
   @Input() filters!: QueryFilterModel;
   @Output() searchQuery = new EventEmitter<string>();
@@ -20,8 +20,7 @@ export class PropertyViewListSearchComponent implements OnInit {
       debounceTime(800)
     ).subscribe(data => {
       this.searchQuery.emit(data);
-
-    })
+    });
   }
 
   onQueryChange(value) {
@@ -30,9 +29,6 @@ export class PropertyViewListSearchComponent implements OnInit {
 
   onFilterToggle() {
     this.filterToggle.emit(true);
-  }
-
-  ngOnInit(): void {
   }
 
 }

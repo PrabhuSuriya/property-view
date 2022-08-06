@@ -14,6 +14,7 @@ export class PropertyViewService {
     this.baseUrl = environment.baseAPIUrl
   }
 
+
   getProperties(query: QueryFilterModel) {
     return this.http.post<PropertiesResponse>(
       this.getUrl('serp/g'),
@@ -31,6 +32,7 @@ export class PropertyViewService {
   private getUrl = path => `${this.baseUrl}/${path}`;
 }
 
+// Default values set for request
 const getDefaultQueryBody = (): QueryBody => ({
   "operationName": "SearchRequestQuery",
   "variables": {

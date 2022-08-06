@@ -1,27 +1,15 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { flyInOut } from '@app/animations/common.animations';
 import { Listing, MapViewport } from '@app/models/properties.model';
 import { CoreFilters, QueryFilterModel } from '@app/models/query-body.model';
 import { LoadProperties, UpdateFilter } from '@app/store/property-view/property-view.actions';
 import { PVState } from '@app/store/state';
 import { Store } from '@ngrx/store';
 import { map, Observable, startWith, tap } from 'rxjs';
-
 @Component({
   templateUrl: './property-view.component.html',
   styleUrls: ['./property-view.component.scss'],
-  animations: [
-    trigger('flyInOut', [
-      state('in', style({ transform: 'translateX(0)' })),
-      transition('void => *', [
-        style({ transform: 'translateX(-100%)' }),
-        animate('200ms ease-out')
-      ]),
-      transition('* => void', [
-        animate('200ms ease-in', style({ transform: 'translateX(100%)' }))
-      ])
-    ])
-  ]
+  animations: [flyInOut]
 })
 export class PropertyViewComponent implements OnInit {
 
@@ -49,7 +37,7 @@ export class PropertyViewComponent implements OnInit {
   }
 
   onSearchQuery(queryText) {
-    this.store.dispatch(UpdateFilter({ filters: { q: queryText } } as any));
+    this.store.dispatch(UpdateFilter({ filters: { q: queryText } } as any)); //TODO remove any
   }
 
   onFilterToggle(toggle) {
@@ -57,7 +45,7 @@ export class PropertyViewComponent implements OnInit {
   }
 
   onFilterChange(filter: CoreFilters) {
-    this.store.dispatch(UpdateFilter({ filters: { coreFilters: filter } } as any))
+    this.store.dispatch(UpdateFilter({ filters: { coreFilters: filter } } as any)); //TODO remove any
   }
 
   onClose(toggle) {
@@ -68,8 +56,8 @@ export class PropertyViewComponent implements OnInit {
     return property.map((p, i) => ({
       ...p,
       roomInfo: `${p.bedrooms} br . ${p.bathrooms.full} ba . Sleeps ${p.sleeps}`, //TODO implement i18n
-      roomInfoFull: `${p.bedrooms} Bedrooms \n ${p.bathrooms.full} Full Bathrooms \n ${p.bathrooms.half} Half Bathrooms \n ${p.sleeps} Sleeps `, //TODO implement i18n
-      matchPercentage: ((i + 1) * 9) % 100 // TODO Remove mocking match percentage
+      roomInfoFull: `${p.bedrooms} Bedrooms \n ${p.bathrooms.full} Full Bathrooms \n ${p.bathrooms.half} Half Bathrooms \n ${p.sleeps} Sleeps `,
+      matchPercentage: ((i + 1) * 9) % 100 // TODO Remove mock match percentage
     }));
   }
 
