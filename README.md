@@ -1,27 +1,86 @@
-# PropertyView
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+# Property View
 
-## Development server
+Property is a simple web app to list the properties fetched from a REST api in list and map view. This is being developed as part of take-home assignment.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Material design
+- Split view for List and Map
+- Filter
+- Info window for the properties on the map
+- ngrx for reactive state management
+- Pure components and presentation components
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Run Locally
 
-## Running unit tests
+Run `npm start` for a dev server. Navigate to `http://localhost:3500/`. The application will automatically reload if you change any of the source files. Proxy is configured to hit the api server bypassing CORS.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Clone the project
 
-## Running end-to-end tests
+```bash
+  git clone https://github.com/PrabhuSuriya/property-view.git
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Go to the project directory
 
-## Further help
+```bash
+  cd property-view
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+View the app at http://localhost:3500/
+
+
+## Deployment
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/property-view` directory.
+
+The code is hosted in Github and set up for Continuous Deployment (from master) using Netlify.
+The deployed app can be viewed at
+
+https://prop-view.prabhusuriya.com
+
+https://prop-view.netlify.app
+
+## Tech Stack
+
+**Client:** Angualar 14
+
+1. primeNG - for UI components
+1. primeFlex - for CSS utilities and layout
+2. primeIcons - for icons
+3. ngrx - for reactive state management
+4. @angular/google-maps - for map view
+
+**Server:** REST API
+
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+
+## Authors
+
+- [@PrabhuSuriya](https://github.com/PrabhuSuriya)
+
+
+## Demo
+
+https://prop-view.prabhusuriya.com
+
+https://prop-view.netlify.app
+
